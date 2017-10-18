@@ -57,9 +57,11 @@
 			$count_design=1;
 			foreach($projects as  $value){
 			 	//******************* To do : Austin
-			 	echo "project title=".$value['title']."<br>";
+			 	echo "project ".$count_design." title =".$value['title']."<br>";
  			    $count_design++;
- 			    //******************* To do : Austin
+
+ 			    //For each project, just use any photo in the Card 
+ 			    //******************* 
 			} 	
 		}
 		else
