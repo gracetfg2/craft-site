@@ -43,20 +43,23 @@
 </head>
 
 <body >
-<?php include("webpage-utility/ele_navbar.php") ;?>
+<?php include("webpage-utility/ele_nav.php") ;?>
 
 	<!-- Button trigger modal -->
-	<div class="container">
-		<div>
-			<a type="button" class="btn-add" href=""> &nbsp&nbsp Add Design &nbsp&nbsp </a> 
-		</div>		
+<div class="container">
+<div class="main-section">
+	<div>
+		<a type="button" class="btn-add" href=""> &nbsp&nbsp Add Design &nbsp&nbsp </a> 
+	</div>		
 	<?php
-	//******************* To do : Austin
+
 		if(count($projects)>0){		
 			$count_design=1;
 			foreach($projects as  $value){
-			 	echo "project title=".$value['title'];
+			 	//******************* To do : Austin
+			 	echo "project title=".$value['title']."<br>";
  			    $count_design++;
+ 			    //******************* To do : Austin
 			} 	
 		}
 		else
@@ -67,15 +70,10 @@
 
 		mysqli_close($conn);
 			
-		?>
+	?>
 
-			</div>
-
-
-
-
-
-	</div>
+</div>
+</div>
 
 
 

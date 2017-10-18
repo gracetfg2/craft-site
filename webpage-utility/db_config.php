@@ -7,7 +7,7 @@
 
   	$DB_HOST = "webhost.engr.illinois.edu";
    	$DB = "crowdsight_craft";
-   	$SQL_ACC = "crowdsig_pure";
+   	$SQL_ACC = "crowdsight_pure";
    	$SQL_PWD = "123098";
 
   	// // $DB_HOST = "webhost.engr.illinois.edu";
