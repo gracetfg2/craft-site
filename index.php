@@ -48,8 +48,8 @@
 	<!-- Button trigger modal -->
 <div class="container">
 <div class="main-section">
-	<div>
-		<a type="button" class="btn-add" href=""> &nbsp&nbsp Add Design &nbsp&nbsp </a> 
+	<div style='margin-bottom: 20px'>
+		<button class="btn btn-success" href=""> &nbsp&nbsp Add My Project &nbsp&nbsp </a> 
 	</div>		
 	<?php
 
