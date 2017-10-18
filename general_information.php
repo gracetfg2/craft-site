@@ -1,0 +1,5 @@
+<?php
+
+$folder="craft-site";
+
+?>
