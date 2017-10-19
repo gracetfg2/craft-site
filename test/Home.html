@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div onmouseup="mouseUp()">
+		<?php
+			$homepage = file_get_contents('sample_feedback.txt');
+			Print "<div>$homepage</div>";
+			echo "<br>";
+			echo "<br>";
+			echo "Please Select feedback from above and click Compelete";
+			echo "<br>";
+			echo "-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
+			echo "<br>";
+			echo "<br>";
+			echo "<br>";
+			echo "<br>";
+			echo "Below is the Feedbaack list for your reference:";
+			echo "<br>";
+			$feedbackArray = (explode("----------------------------------------------------------------------------------------",$homepage));
+			for ($x = 1; $x < count($feedbackArray); $x++) {
+				Print $x;
+					echo "<br>";
+				Print "<span>$feedbackArray[$x]<span>";
+					echo "<br>";
+			}
+
+			echo "<br>";
+			echo "<br>";
+			echo "Please do NOT select anything from above list.";
+			echo "<br>";
+			echo "<br>";
+		?>
+	</div>
+</body>
+<script>
+function mouseUp() {
+  var sel, range, node;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = window.getSelection().getRangeAt(0);
+            
+            var html = '<span style="background-color:green;">' + range + '</span>'
+            range.deleteContents();
+            
+            var el = document.createElement("div");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            range.insertNode(frag);
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.collapse(false);
+        range.pasteHTML(html);
+    }
+
+}
+
+</script>
+</html>
