@@ -57,14 +57,14 @@
 <div class="container" style="line-height: 2em;">
 
 <div class="main-section">
-        <div class="alert alert-info" id="instruction">
-            <h3>Review Feedback</h3>
-             <p>We have collected feedback from three independent reviewers to help you revise your design. These reviewers are from the target audiences and all have more than three years of professional experience in design. Please review the feedback and highlight the part that you think its useful for improving your design. After that, please click "Next" to go to the next step.</p>
-            <br>
-         </div><!--End alert section for instruction-->
+    <div class="alert alert-info" id="instruction">
+        <h3>Review Feedback</h3>
+         <p>We have collected feedback from three independent reviewers to help you revise your design. These reviewers are from the target audiences and all have more than three years of professional experience in design. Please review the feedback and highlight the part that you think its useful for improving your design. After that, please click "Next" to go to the next step.</p>
+        <br>
+    </div><!--End alert section for instruction-->
 
-        <div id="task">
-            <?php
+    <div id="task">
+        <?php
          
             if(count($feedback)<1){
                 echo "<div style='text-align:center'><p>Your feedback is not ready yet, please contact Grace Yen at <em>design4uiuc@gmail.com</em></p></div>";
@@ -78,13 +78,14 @@
                 foreach ($feedback as $value)
                 {
                     $feedbackNum += 1;
-
                     $content=htmlspecialchars($value['edited_content']);
                    // $content=preg_replace('#&lt;(/?(?:br /))&gt;#', '<\1>', $content);
 
                     echo "<tr id='div-".$value['FeedbackID']."' >
                             <td><strong>#".$feedbackNum."</strong></td>
-                            <td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>".nl2br($content)."</td>  
+
+                            <td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>".nl2br($content)."
+                            </td>  
                     </tr>";
 
                 }
@@ -93,13 +94,11 @@
             }
                
                 
-            ?>
+        ?>
          
-          
-
     </div><!--End Task Section-->
-      <?php include("webpage-utility/footer.php") ?>
-</div><!--End MainSection-->
+    <?php include("webpage-utility/footer.php") ?>
+</div><!--End Main Section-->
 </div><!--End Container-->
 
 <!--Begin Script-->       
