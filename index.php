@@ -69,7 +69,6 @@
 			echo "<div style='margin-top:20px;'>Click 'Add Design' to upload your design.</div>";
 		}
 		
-
 		mysqli_close($conn);
 			
 	?>
