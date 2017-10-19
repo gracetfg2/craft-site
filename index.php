@@ -1,5 +1,5 @@
-<?php 
-	session_start();	
+<?php
+	session_start();
 	include_once('general_information.php');
 	//********************Check Identity
 	// $DESIGNER= $_SESSION['designer_id'];
@@ -7,7 +7,7 @@
 	// $DESIGNER= 20;
 	// if(!$DESIGNER) { header("Location: ../index.php"); die(); }
 	//	$EMAIL= $_SESSION['email'];
-	//********************Check Identity	
+	//********************Check Identity
 
 	// Connect to DB
 	include_once('webpage-utility/db_utility.php');
@@ -21,8 +21,8 @@
         $result = $stmt->get_result();
         while ($myrow = $result->fetch_assoc()) {
 	        $projects[]=$myrow;
-	    }                
-         mysqli_stmt_close($stmt);  
+	    }
+         mysqli_stmt_close($stmt);
     }
     else {
     //No Designs found
@@ -31,7 +31,7 @@
         die();
     }
 
-  
+
 ?>
 
 <!DOCTYPE html>
@@ -49,29 +49,36 @@
 <div class="container">
 <div class="main-section">
 	<div style='margin-bottom: 20px'>
-		<button class="btn btn-success" href=""> &nbsp&nbsp Add My Project &nbsp&nbsp </a> 
-	</div>		
+		<button class="btn btn-success" href=""> &nbsp&nbsp Add My Project &nbsp&nbsp </a>
+	</div>
 	<?php
 
-		if(count($projects)>0){		
+		if(count($projects)>0){
 			$count_design=1;
 			foreach($projects as  $value){
+				/*echo "project ".$count_design." title =".$value['title']."<br>";
+ 			    $count_design++;*/
 			 	//******************* To do : Austin
-			 	echo "project ".$count_design." title =".$value['title']."<br>";
- 			    $count_design++;
-
- 			    //For each project, just use any photo in the Card 
- 			    //******************* 
-			} 	
+					echo '<div class="card" style="width: 20rem; display:inline-block; float:left; margin-right:35px;">
+					<img class="card-img-top" src="pumpkin.png" alt="Card image cap">
+					<div class="card-body">
+					<h4 class="card-title">'.$value['title'].'</h4>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+					</div>';
+ 			    //For each project, just use any photo in the Card
+ 			    //*******************
+			}
 		}
 		else
 		{
 			echo "<div style='margin-top:20px;'>Click 'Add Design' to upload your design.</div>";
 		}
-		
+
 
 		mysqli_close($conn);
-			
+
 	?>
 
 </div>
