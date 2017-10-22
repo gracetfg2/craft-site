@@ -63,7 +63,7 @@
         <br>
     </div><!--End alert section for instruction-->
 
-    <div id="task">
+    <div onmouseup="mouseUp()">
         <?php
          
             if(count($feedback)<1){
@@ -103,6 +103,33 @@
 
 <!--Begin Script-->       
 <script>
+function mouseUp() {
+  var sel, range, node;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = window.getSelection().getRangeAt(0);
+            
+            color = document.queryCommandValue("backColor");
+            
+            var html = '<span style="background-color:green;">' + range + '</span>';
+            range.deleteContents();
+            
+            var el = document.createElement("div");
+            el.innerHTML = html;
+            var frag = document.createDocumentFragment(), node, lastNode;
+            while ( (node = el.firstChild) ) {
+                lastNode = frag.appendChild(node);
+            }
+            range.insertNode(frag);
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.collapse(false);
+        range.pasteHTML(html);
+    }
+
+}
 
 
 </script>
