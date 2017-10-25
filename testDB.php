@@ -1,6 +1,6 @@
 <?php
 
-$servername = "arsun2.web.engr.illinois.edu";
+/*$servername = "arsun2.web.engr.illinois.edu";
 $username = "arsun2_1";
 $password = "craft123";
 $dbname = "arsun2_craft";
@@ -14,5 +14,5 @@ if (!$conn) {
 else {
     echo "Connection Successful";
 }
-mysqli_close($conn);
+mysqli_close($conn);*/
 ?>
