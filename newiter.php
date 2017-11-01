@@ -46,16 +46,13 @@
 <?php include("webpage-utility/ele_nav.php") ;?>
 
 	<!-- Button trigger modal -->
-<div class="container">
+<div class="container" align-self:left>
 <div class="main-section">
 	<div style='margin-bottom: 20px'>
-		<a href="index.php" class="btn btn-primary">Back</a>
+		<a href="iterpage.php" class="btn btn-primary">Back</a>
 	</div>
+
 	<?php
-
-
-
-
 
   echo
   '
@@ -69,20 +66,37 @@
         <br>
       </form>
 			<form action="">
-        <br> Upload your design image:<br>
-      </form>
-			<form action="">
-				<label><input type="file" name="pic" align-self="center" accept="image/*"></label>
-			</form>
-      <select>
+        <br> Upload your iteration:<br>
+      </form>'; ?>
+      <script type="text/javascript ">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+      <body>
+          <center> <form id="form1" runat="server" align-self="center">
+              <input type='file' onchange="readURL(this);" />
+              <img id="blah" src="#" alt="" />
+          </form> </center>
+      </body>
+
+     <<?php
+      echo
+      '<select>
 			<br>
-        <option value="Website">Website</option>
-        <option value="Poster/Flyer">Poster/Flyer</option>
-        <option value="Mobile App">Mobile App</option>
-        <option value="Logo">Logo</option>
+        <option value="Public">Public</option>
+        <option value="Private">Private</option>
       </select>
 			<form action=""> <br>
-				Design Description:<br>
+				Iteration Description:<br>
 				<textarea class="userinput" rows="4" cols="50"></textarea>
 				<br>
 			</form>

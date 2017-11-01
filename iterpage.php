@@ -49,7 +49,8 @@
 <div class="container">
 <div class="main-section">
 	<div style='margin-bottom: 20px'>
-		<a href="projectpage.php" class="btn btn-primary">Add new project</a>
+    <a href="index.php" class="btn btn-primary">Back to projects</a>
+		<a href="newiter.php" class="btn btn-primary">Add new iteration</a>
 	</div>
 	<?php
 
@@ -60,11 +61,11 @@
  			    $count_design++;*/
 			 	//******************* To do : Austin
 					echo '<div class="card" style="width: 20rem; display:inline-block; float:left; padding: 10px; margin-right:35px; border:groove;">
-					<img class="card-img-top" src="pumpkin.png" alt="Card image cap" style="width:175px;height:215px;"">
+					<img class="card-img-top" src="career.png" alt="Card image cap" style="width:175px;height:215px;"">
 					<div class="card-body">
-					<h4 class="card-title">'.$value['title'].'</h4>
-					<p class="card-text">Some example text to build on the card title and make up the bulk of the card\'s content.</p>
-					<a href="iterpage.php" class="btn btn-primary">Go to project</a>
+					<h4 class="card-title">Iteration #X</h4>
+					<p class="card-text">Feedback: Moved picture to center, improved font, condensed wording of text.</p>
+					<a href="" class="btn btn-primary">Go to iteration</a>
 					</div>
 					</div>';
  			    //For each project, just use any photo in the Card
