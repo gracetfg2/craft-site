@@ -64,6 +64,8 @@
     </div><!--End alert section for instruction-->
 
     <div onmouseup="mouseUp()">
+        <button onclick="changeColor('green')"> Green </button>
+        <button onclick="changeColor('yellow')"> Yellow </button>
         <?php
          
             if(count($feedback)<1){
@@ -103,6 +105,12 @@
 
 <!--Begin Script-->       
 <script>
+var tracker;
+function changeColor(color)
+{  
+    tracker = color;
+
+}
 function mouseUp() {
   var sel, range, node;
     if (window.getSelection) {
@@ -111,13 +119,12 @@ function mouseUp() {
         if (sel.getRangeAt && sel.rangeCount) {
             range = window.getSelection().getRangeAt(0);
             
-            color = document.queryCommandValue("backColor");
             
-            var html = '<span style="background-color:yellow;">' + range + '</span>';
+            var html = '<span style="background-color:' + tracker + ';">' + range + '</span>';
             range.deleteContents();
             
-            var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
-            html += dropdown;
+            //var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
+            //html += dropdown;
 
             var el = document.createElement("div");
             el.innerHTML = html;
@@ -127,7 +134,7 @@ function mouseUp() {
                 lastNode = frag.appendChild(node);
             }
             range.insertNode(frag);
-
+            //console.log(document.documentElement.innerHTML.getIndex(sel));
         }
     } else if (document.selection && document.selection.createRange) {
         range = document.selection.createRange();
@@ -136,74 +143,11 @@ function mouseUp() {
     }
 
 }
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-function dropdown()
-{
-    var select = document.getElementById("ddl");
-    var option = document.createElement("option");
-    option.text = "yay";
-    select.add(option);
-    return select;
-}
+
 </script>
 
 
-<style>
-/* Style The Dropdown Button */
-    .dropbtn 
-    {
-        background-color: #4CAF50;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
 
-/* The container <div> - needed to position the dropdown content */
-    .dropdown 
-    {
-        position: relative;
-        display: inline-block;
-    }
-
-/* Dropdown Content (Hidden by Default) */
-    .dropdown-content 
-    {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-/* Links inside the dropdown */
-    .dropdown-content a 
-    {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-/* Change color of dropdown links on hover */
-    .dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content 
-    {
-        display: block;
-    }
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn 
-    {
-        background-color: #3e8e41;
-    }
-</style>
 
 </body>
 
