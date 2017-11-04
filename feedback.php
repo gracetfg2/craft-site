@@ -64,6 +64,8 @@
     </div><!--End alert section for instruction-->
 
     <div onmouseup="mouseUp()">
+        <button onclick="changeColor('green')"> Green </button>
+        <button onclick="changeColor('yellow')"> Yellow </button>
         <?php
          
             if(count($feedback)<1){
@@ -103,25 +105,36 @@
 
 <!--Begin Script-->       
 <script>
+var tracker;
+function changeColor(color)
+{  
+    tracker = color;
+
+}
 function mouseUp() {
   var sel, range, node;
     if (window.getSelection) {
         sel = window.getSelection();
+
         if (sel.getRangeAt && sel.rangeCount) {
             range = window.getSelection().getRangeAt(0);
             
-            color = document.queryCommandValue("backColor");
             
-            var html = '<span style="background-color:green;">' + range + '</span>';
+            var html = '<span style="background-color:' + tracker + ';">' + range + '</span>';
             range.deleteContents();
             
+            //var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
+            //html += dropdown;
+
             var el = document.createElement("div");
             el.innerHTML = html;
+
             var frag = document.createDocumentFragment(), node, lastNode;
             while ( (node = el.firstChild) ) {
                 lastNode = frag.appendChild(node);
             }
             range.insertNode(frag);
+            //console.log(document.documentElement.innerHTML.getIndex(sel));
         }
     } else if (document.selection && document.selection.createRange) {
         range = document.selection.createRange();
@@ -131,8 +144,9 @@ function mouseUp() {
 
 }
 
-
 </script>
+
+
 
 
 </body>
