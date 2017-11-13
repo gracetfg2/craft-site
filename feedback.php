@@ -73,6 +73,7 @@
     
             }else{
 
+                
                 echo "<table class='table table-hover table-nonfluid'>";
                 echo "<tbody>";
 
@@ -92,15 +93,17 @@
 
                 }
                 echo "</tbody></table>";
-
+                
             }
                
                 
         ?>
          
     </div><!--End Task Section-->
+    
     <?php include("webpage-utility/footer.php") ?>
 </div><!--End Main Section-->
+<div class='droptarget' ondrop='drop(event)' ondragover='allowDrop(event)'></div>
 </div><!--End Container-->
 
 <!--Begin Script-->       
@@ -120,7 +123,7 @@ function mouseUp() {
             range = window.getSelection().getRangeAt(0);
             
             
-            var html = '<span style="background-color:' + tracker + ';">' + range + '</span>';
+            var html = '<span style="background-color:' + tracker + ';" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">' + range + '</span>';
             range.deleteContents();
             
             //var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
@@ -142,6 +145,24 @@ function mouseUp() {
         range.pasteHTML(html);
     }
 
+}
+function dragStart(event) {
+    event.dataTransfer.setData("Text", event.target.id);
+}
+
+function dragging(event) {
+    document.getElementById("demo").innerHTML = "The p element is being dragged";
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("Text");
+    event.target.appendChild(document.getElementById(data));
+    document.getElementById("demo").innerHTML = "The p element was dropped";
 }
 
 </script>
