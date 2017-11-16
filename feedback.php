@@ -36,6 +36,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .droptarget {
+            float: left; 
+        width: 300px; 
+        height: 3500px;
+        margin: 15px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+}
+</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -63,6 +73,8 @@
         <br>
     </div><!--End alert section for instruction-->
 
+<div class='row'>
+    <div class='col-md-8'>
     <div onmouseup="mouseUp()">
         <button onclick="changeColor('green')"> Green </button>
         <button onclick="changeColor('yellow')"> Yellow </button>
@@ -98,12 +110,20 @@
                
                 
         ?>
-         
+
+
+    
+    </div>
+
+</div> 
+    <div class='col-md-4'>
+        <div class='droptarget'  ondrop='drop(event)' ondragover='allowDrop(event)'></div>
+    </div>        
     </div><!--End Task Section-->
     
     <?php include("webpage-utility/footer.php") ?>
 </div><!--End Main Section-->
-<div class='droptarget' ondrop='drop(event)' ondragover='allowDrop(event)'></div>
+
 </div><!--End Container-->
 
 <!--Begin Script-->       
@@ -123,7 +143,14 @@ function mouseUp() {
             range = window.getSelection().getRangeAt(0);
             
             
-            var html = '<span style="background-color:' + tracker + ';" ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">' + range + '</span>';
+            //var spanner = document.createElement('span');
+            //spanner.innerHTML = range;
+            //spanner.style.backgroundColor = tracker;
+            //spanner.addEventListener("ondragstart",dragStart(event));
+            //spanner.addEventListener("draggable",true);
+            //spanner.id = "dragtarget";
+
+            var html = '<span style="background-color:' + tracker + ';" ondragstart="dragStart(event)" draggable="true" id="dragtarget">' + range + '</span>';
             range.deleteContents();
             
             //var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
@@ -146,13 +173,11 @@ function mouseUp() {
     }
 
 }
+
 function dragStart(event) {
     event.dataTransfer.setData("Text", event.target.id);
 }
 
-function dragging(event) {
-    document.getElementById("demo").innerHTML = "The p element is being dragged";
-}
 
 function allowDrop(event) {
     event.preventDefault();
@@ -162,7 +187,6 @@ function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.appendChild(document.getElementById(data));
-    document.getElementById("demo").innerHTML = "The p element was dropped";
 }
 
 </script>
