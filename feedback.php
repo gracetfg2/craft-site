@@ -117,7 +117,8 @@
 
 </div> 
     <div class='col-md-4'>
-        <div class='droptarget'  ondrop='drop(event)' ondragover='allowDrop(event)'></div>
+        <button onclick="saveTextAsFile()">Save Text to File</button>
+        <div class='droptarget' id = 'inputTextToSave' ondrop='drop(event)' ondragover='allowDrop(event)'></div>
     </div>        
     </div><!--End Task Section-->
     
@@ -187,6 +188,31 @@ function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.appendChild(document.getElementById(data));
+}
+function saveTextAsFile()
+{
+    //document.getElementById("inputTextToSave").value;
+    //document.getElementsByClass('droptarget').first()
+    var textToSave = document.getElementById('inputTextToSave').innerHTML;
+    //document.body.getElementsByClassName("droptarget").text();
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "fileResult.txt";
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
 }
 
 </script>
