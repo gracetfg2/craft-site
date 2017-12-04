@@ -10,7 +10,7 @@
     //********************Check Identity
 
     // Connect to DB
-    //test
+    //test123
     include_once('webpage-utility/db_utility.php');
     $conn = connect_to_db();
 
@@ -69,7 +69,7 @@
 
 <div class="main-section">
     <div class="alert alert-info" id="instruction">
-        <h3>Review Feedback</h3>
+        <h3>Review Feedback Task</h3>
          <p>We have collected feedback from three independent reviewers to help you revise your design. These reviewers are from the target audiences and all have more than three years of professional experience in design. Please review the feedback and highlight the part that you think its useful for improving your design. After that, please click "Next" to go to the next step.</p>
         <br>
     </div><!--End alert section for instruction-->
