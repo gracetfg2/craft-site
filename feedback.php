@@ -10,6 +10,7 @@
     //********************Check Identity
 
     // Connect to DB
+    //test
     include_once('webpage-utility/db_utility.php');
     $conn = connect_to_db();
 
