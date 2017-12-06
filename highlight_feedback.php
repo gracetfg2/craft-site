@@ -74,10 +74,18 @@
     </div><!--End alert section for instruction-->
 
 <div class='row'>
-    <div class='col-md-8'>
+    <div class='col-md-12'>
+        <button onclick="saveTextAsFile()">Save Text to File</button>
+        <input type="text" id="fname">
+        <label for="colorWell">Color:</label>
+        <input type="color" value="#ff0000" id="colorWell">
+       
+
     <div onmouseup="mouseUp()">
-        <button onclick="changeColor('green')"> Green </button>
-        <button onclick="changeColor('yellow')"> Yellow </button>
+        <!-- <button onclick="changeColor('green')"> Green </button>
+        <button onclick="changeColor('yellow')"> Yellow </button> -->
+        <input type="button" id="btnAdd" value="Add Text Field">
+        <p id="fooBar">Fields:</p>
         <?php
          
             if(count($feedback)<1){
@@ -86,7 +94,7 @@
             }else{
 
                 
-                echo "<table class='table table-hover table-nonfluid'>";
+                echo "<table class='table table-hover table-nonfluid' id='inputTextToSave'>";
                 echo "<tbody>";
 
                 $feedbackNum = 0;
@@ -116,15 +124,12 @@
     </div>
 
 </div> 
-    <div class='col-md-4'>
-        <button onclick="saveTextAsFile()">Save Text to File</button>
-        <div class='droptarget' id = 'inputTextToSave' ondrop='drop(event)' ondragover='allowDrop(event)'></div>
-    </div>        
-    </div><!--End Task Section-->
-    
-    <?php include("webpage-utility/footer.php") ?>
-</div><!--End Main Section-->
+        
 
+    
+    
+</div><!--End Main Section-->
+<?php include("webpage-utility/footer.php") ?>
 </div><!--End Container-->
 
 <!--Begin Script-->       
@@ -151,7 +156,7 @@ function mouseUp() {
             //spanner.addEventListener("draggable",true);
             //spanner.id = "dragtarget";
 
-            var html = '<span style="background-color:' + tracker + ';" ondragstart="dragStart(event)" draggable="true" id="dragtarget">' + range + '</span>';
+            var html = '<span style="background-color:' + tracker + ';" >' + range + '</span>';
             range.deleteContents();
             
             //var dropdown = '<div class="dropdown"><button class="dropbtn">Dropdown</button><div class="dropdown-content"><p>Hello World!</p></div></div>';
@@ -174,7 +179,7 @@ function mouseUp() {
     }
 
 }
-
+/*
 function dragStart(event) {
     event.dataTransfer.setData("Text", event.target.id);
 }
@@ -188,7 +193,7 @@ function drop(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("Text");
     event.target.appendChild(document.getElementById(data));
-}
+} */
 function saveTextAsFile()
 {
     //document.getElementById("inputTextToSave").value;
@@ -214,6 +219,39 @@ function destroyClickedElement(event)
 {
     document.body.removeChild(event.target);
 }
+var colorWell;
+var defaultColor = "#0000ff";
+
+window.addEventListener("load", startup, false);
+function startup() {
+  colorWell = document.querySelector("#colorWell");
+  colorWell.value = defaultColor;
+  colorWell.addEventListener("input", updateFirst, false);
+  colorWell.select();
+}
+var colorer = "blue";
+function updateFirst(event) {
+    colorer = event.target.value;
+  }
+function add(type) {
+  //Create an input type dynamically.   
+  var element = document.createElement("input");
+  //Assign different attributes to the element. 
+  element.type = type;
+  element.value = document.getElementById("fname").value;
+  element.name = type; // And the name too?
+  element.style.backgroundColor = colorer;
+  element.onclick = function() { // Note this is a function
+    tracker = element.style.backgroundColor;
+  };
+
+  var foo = document.getElementById("fooBar");
+  //Append the element in page (in span).  
+  foo.appendChild(element);
+}
+document.getElementById("btnAdd").onclick = function() {
+  add("button");
+};
 
 </script>
 
