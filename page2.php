@@ -44,6 +44,7 @@
         margin: 15px;
         padding: 10px;
         border: 1px solid #aaaaaa;
+        clear: left;
 }
 </style>
     <meta charset="utf-8">
@@ -76,7 +77,7 @@
 <div class='row'>
     <div class='col-md-8'>
 
-        <button type = "button" onclick="return window.location.href='page2.php'"> Begin Interpretation </button>
+       
         <?php
          
             if(count($feedback)<1){
@@ -87,21 +88,29 @@
                 
                 echo "<table class='table table-hover table-nonfluid'>";
                 echo "<tbody>";
-
+                //$element = "<div id =";
                 $feedbackNum = 0;
                 foreach ($feedback as $value)
                 {
                     $feedbackNum += 1;
                     $content=htmlspecialchars($value['edited_content']);
                    // $content=preg_replace('#&lt;(/?(?:br /))&gt;#', '<\1>', $content);
+                    $arr = explode(".", $content);
+                    //echo "<br>";
+                    
+ 
+                    for($id = 0; $id<count($arr); $id++) 
+                    {
+                    	echo "<div style =' border-style: solid; background-color: orange' ondragstart='dragStart(event)'; draggable='true';  id = '$id + $feedbackNum' >$arr[$id]</div>";
 
-                    echo "<tr id='div-".$value['FeedbackID']."' >
+                    } 
+                   /* echo "<tr id='div-".$value['FeedbackID']."' >
                             <td><strong>#".$feedbackNum."</strong></td>
 
                             <td style='text-align: justify; padding-bottom:10px; padding-right:25px;' class='table-text'>".nl2br($content)."
                             </td>  
-                    </tr>";
-
+                    </tr>"; */
+                    echo "---------------------------------------------------------------------<br>";
                 }
                 echo "</tbody></table>";
                 
@@ -114,27 +123,27 @@
 
 <?php include("webpage-utility/footer.php") ?>
 </div> 
-<!--
+
     <div class='col-md-4'>
         
-        <button onclick="saveTextAsFile()">Save Text to File</button>
+        <button onclick="saveTextAsFile()">Next Page</button>
 
-       
-        <div class='droptarget' id = 'inputTextToSave-1' ondrop='drop(event)' ondragover='allowDrop(event)'>
-             <input type="text" id="myText-1" value="Some text...">
+       	<div id = "mainData">
+        <div class='droptarget' id = 'inputTextToSave-1' ondrop='drop(event)' ondragover='allowDrop(event)' >
+        	<input type="text" id="myText" value="Some text...">
         </div>
 
         
         <div class='droptarget' id = 'inputTextToSave-2' ondrop='drop(event)' ondragover='allowDrop(event)'>
-            <input type="text" id="myText-2" value="Some text...">
+            <input type="text" id="myText" value="Some text...">
         </div>
        
         <div class='droptarget' id = 'inputTextToSave-3' ondrop='drop(event)' ondragover='allowDrop(event)'>
-            <input type="text" id="myText-4" value="Some text...">
+        	<input type="text" id="myText" value="Some text...">
         </div>
-        
+        </div>
     </div>      
-    </div><!End Task Section-->  
+    </div><!End Task Section -->
     
     
 </div><!--End Main Section-->
@@ -168,7 +177,7 @@ function mouseUp() {
 
 }
 
-function replace(sel){
+/*function replace(sel){
     if (sel.getRangeAt && sel.rangeCount) {
             range = window.getSelection().getRangeAt(0);
             
@@ -198,10 +207,9 @@ function replace(sel){
             range.insertNode(frag);
             //console.log(document.documentElement.innerHTML.getIndex(sel));
         }
-}
+}*/
 
 function dragStart(event) {
-    replace(glob);
     event.dataTransfer.setData("Text", event.target.id);
 
 }
@@ -221,21 +229,25 @@ function saveTextAsFile()
 {
     //document.getElementById("inputTextToSave").value;
     //document.getElementsByClass('droptarget').first()
-    var textToSave = document.getElementById('inputTextToSave').innerHTML;
+    var textToSave = "<div style = 'float: right;'><textarea id='myText' style='height: 300px; display: block; margin: 15px 200px 25px 25px; width: 834px;'></textarea><textarea id='myText' style='height: 300px; display: block; margin: 15px 200px 25px 25px; width: 834px;'></textarea><textarea id='myText' style='height: 300px; display: block; margin: 15px 200px 25px 25px; width: 834px;'></textarea></div>";
+    textToSave += document.getElementById('mainData').innerHTML;
     //document.body.getElementsByClassName("droptarget").text();
-    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+   // textToSave += document.getElementById('inputTextToSave-2').innerHTML;
+    //textToSave += document.getElementById('inputTextToSave-3').innerHTML;
+    
+    document.body.innerHTML=textToSave;
+   /* var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
     var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
     var fileNameToSaveAs = "fileResult.txt";
- 
-    var downloadLink = document.createElement("a");
+   var downloadLink = document.createElement("a");
     downloadLink.download = fileNameToSaveAs;
     downloadLink.innerHTML = "Download File";
     downloadLink.href = textToSaveAsURL;
     downloadLink.onclick = destroyClickedElement;
     downloadLink.style.display = "none";
     document.body.appendChild(downloadLink);
- 
-    downloadLink.click();
+ 	
+    downloadLink.click();*/
 }
  
 function destroyClickedElement(event)

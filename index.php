@@ -49,7 +49,7 @@
 <div class="container">
 <div class="main-section">
 	<div style='margin-bottom: 20px'>
-		<a href="projectpage.php" class="btn btn-primary">Add new project</a>
+		<button class="btn btn-success" href=""> &nbsp&nbsp Add My Project &nbsp&nbsp </a>
 	</div>
 	<?php
 
@@ -59,12 +59,12 @@
 				/*echo "project ".$count_design." title =".$value['title']."<br>";
  			    $count_design++;*/
 			 	//******************* To do : Austin
-					echo '<div class="card" style="width: 20rem; display:inline-block; float:left; padding: 10px; margin-right:35px; border:groove;">
-					<img class="card-img-top" src="pumpkin.png" alt="Card image cap" style="width:175px;height:215px;"">
+					echo '<div class="card" style="width: 20rem; display:inline-block; float:left; margin-right:35px;">
+					<img class="card-img-top" src="pumpkin.png" alt="Card image cap">
 					<div class="card-body">
 					<h4 class="card-title">'.$value['title'].'</h4>
-					<p class="card-text">Some example text to build on the card title and make up the bulk of the card\'s content.</p>
-					<a href="iterpage.php" class="btn btn-primary">Go to project</a>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
 					</div>
 					</div>';
  			    //For each project, just use any photo in the Card
