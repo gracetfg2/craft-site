@@ -75,17 +75,17 @@
 
 <div class='row'>
     <div class='col-md-12'>
-        <button onclick="saveTextAsFile()">Save Text to File</button>
+        <button onclick="saveTextAsFile()">Create New Label</button>
         <input type="text" id="fname">
-        <label for="colorWell">Color:</label>
+        <label for="colorWell">Choose color for the label:</label>
         <input type="color" value="#ff0000" id="colorWell">
        
 
     <div onmouseup="mouseUp()">
         <!-- <button onclick="changeColor('green')"> Green </button>
         <button onclick="changeColor('yellow')"> Yellow </button> -->
-        <input type="button" id="btnAdd" value="Add Text Field">
-        <p id="fooBar">Fields:</p>
+        <input type="button" id="btnAdd" value="Save the new label">
+        <p id="fooBar">Current Labels:</p>
         <?php
          
             if(count($feedback)<1){
